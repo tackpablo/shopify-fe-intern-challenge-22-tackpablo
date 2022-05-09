@@ -2,45 +2,76 @@ import { useState } from "react";
 import {
   FormControl,
   FormLabel,
-  FormErrorMessage,
   FormHelperText,
-  Input,
   Button,
   Textarea,
 } from "@chakra-ui/react";
 
-function TextForm() {
-  let [value, setValue] = useState("");
+function TextForm(props) {
+  let [value, setValue] = useState(undefined);
+  const { setApiResponse } = props;
 
   let handleInputChange = (e) => {
     let inputValue = e.target.value;
     setValue(inputValue);
+    console.log("VALUE: ", value);
   };
 
   const isError = value === "";
+
+  const onSubmitHandler = (e) => {
+    e.preventDefault();
+    console.log("SUBMITTED");
+    console.log("VALUE FROM SUBMIT: ", value);
+    const query = value;
+
+    const data = {
+      prompt: `${query}`,
+      temperature: 0.5,
+      max_tokens: 64,
+      top_p: 1.0,
+      frequency_penalty: 0.0,
+      presence_penalty: 0.0,
+    };
+
+    let returnedData;
+
+    fetch("https://api.openai.com/v1/engines/text-curie-001/completions", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${process.env.OPENAI_SECRET}`,
+      },
+      body: JSON.stringify(data),
+    })
+      .then((res) => res.json())
+      .then((data) => (returnedData = data))
+      .then(() => console.log(returnedData));
+  };
 
   return (
     <>
       <FormControl isInvalid={isError}>
         <FormLabel htmlFor="text">Enter Prompt</FormLabel>
-        <Textarea
-          value={value}
-          onChange={handleInputChange}
-          placeholder="Here is a sample placeholder"
-          size="sm"
-        />
+        <form onSubmit={(e) => onSubmitHandler(e)}>
+          <Textarea
+            value={value}
+            onChange={handleInputChange}
+            placeholder="Enter a prompt for AI translation."
+            size="sm"
+            type="text"
+          />
 
-        {!isError ? (
-          <FormHelperText>Entering prompt for AI translation...</FormHelperText>
-        ) : (
-          <FormErrorMessage>
-            Enter a prompt for AI translation.
-          </FormErrorMessage>
-        )}
+          {!isError && (
+            <FormHelperText>
+              Entering prompt for AI translation...
+            </FormHelperText>
+          )}
 
-        <Button colorScheme="teal" variant="solid">
-          Submit
-        </Button>
+          <Button colorScheme="teal" variant="solid" type="submit">
+            Submit
+          </Button>
+        </form>
       </FormControl>
     </>
   );
