@@ -2,7 +2,7 @@ import { Box } from "@chakra-ui/react";
 import TextForm from "../TextForm/TextForm";
 
 function FormCard(props) {
-  const { setApiResponse } = props;
+  const { setApiResponse, value, setValue } = props;
   return (
     <>
       <Box
@@ -12,7 +12,11 @@ function FormCard(props) {
         overflow="hidden"
         mt="2em"
       >
-        <TextForm setApiResponse={setApiResponse} />
+        <TextForm
+          setApiResponse={setApiResponse}
+          value={value}
+          setValue={setValue}
+        />
       </Box>
     </>
   );

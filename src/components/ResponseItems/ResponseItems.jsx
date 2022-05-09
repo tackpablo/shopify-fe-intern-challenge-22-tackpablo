@@ -1,4 +1,5 @@
-function ResponseItems() {
+function ResponseItems(props) {
+  const { value } = props;
   return <></>;
 }
 

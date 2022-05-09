@@ -1,7 +1,8 @@
 import { Box } from "@chakra-ui/react";
 import ResponseItems from "../ResponseItems/ResponseItems";
 
-function ResponseCard() {
+function ResponseCard(props) {
+  const { apiResponse, value } = props;
   return (
     <>
       <Box
@@ -11,7 +12,7 @@ function ResponseCard() {
         overflow="hidden"
         mt="2em"
       >
-        <ResponseItems />
+        <ResponseItems value={value} />
       </Box>
     </>
   );

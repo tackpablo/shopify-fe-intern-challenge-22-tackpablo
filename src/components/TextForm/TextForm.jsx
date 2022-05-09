@@ -1,4 +1,3 @@
-import { useState } from "react";
 import {
   FormControl,
   FormLabel,
@@ -8,8 +7,7 @@ import {
 } from "@chakra-ui/react";
 
 function TextForm(props) {
-  let [value, setValue] = useState(undefined);
-  const { setApiResponse } = props;
+  const { setApiResponse, value, setValue } = props;
 
   let handleInputChange = (e) => {
     let inputValue = e.target.value;
@@ -40,13 +38,14 @@ function TextForm(props) {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${process.env.OPENAI_SECRET}`,
+        Authorization: `Bearer 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`,
       },
       body: JSON.stringify(data),
     })
       .then((res) => res.json())
-      .then((data) => (returnedData = data))
-      .then(() => console.log(returnedData));
+      .then((data) => (returnedData = data.choices[0].text))
+      .then(() => console.log("RETURNED DATA: ", returnedData))
+      .then(() => setApiResponse({ query: returnedData }));
   };
 
   return (
