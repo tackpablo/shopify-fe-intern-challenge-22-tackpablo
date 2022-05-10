@@ -7,15 +7,16 @@ import {
 } from "@chakra-ui/react";
 
 function TextForm(props) {
-  const { setApiResponse, value, setValue } = props;
+  const { setApiResponse, value, setValue, apiResponse } = props;
 
   let handleInputChange = (e) => {
     let inputValue = e.target.value;
+
     setValue(inputValue);
     console.log("VALUE: ", value);
   };
 
-  const isError = value === "";
+  const isError = value.length === 0;
 
   const onSubmitHandler = (e) => {
     e.preventDefault();
@@ -45,7 +46,7 @@ function TextForm(props) {
       .then((res) => res.json())
       .then((data) => (returnedData = data.choices[0].text))
       .then(() => console.log("RETURNED DATA: ", returnedData))
-      .then(() => setApiResponse({ query: returnedData }));
+      .then(() => setApiResponse(returnedData));
   };
 
   return (

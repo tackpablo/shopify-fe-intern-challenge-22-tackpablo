@@ -12,7 +12,7 @@ function ResponseCard(props) {
         overflow="hidden"
         mt="2em"
       >
-        <ResponseItems value={value} />
+        <ResponseItems value={value} apiResponse={apiResponse} />
       </Box>
     </>
   );

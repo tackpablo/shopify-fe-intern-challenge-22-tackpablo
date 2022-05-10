@@ -7,7 +7,7 @@ import { ChakraProvider, Center } from "@chakra-ui/react";
 
 function App() {
   const [value, setValue] = useState("");
-  const [apiResponse, setApiResponse] = useState({});
+  const [apiResponse, setApiResponse] = useState("");
 
   return (
     <ChakraProvider>
@@ -15,13 +15,18 @@ function App() {
         <h1>Fun with AI!</h1>
         <Center>
           <FormCard
+            apiResponse={apiResponse}
             setApiResponse={setApiResponse}
             value={value}
             setValue={setValue}
           />
         </Center>
-        <ResponseDiv>Responses</ResponseDiv>
-        <ResponseCard apiResponse={apiResponse} value={value} />
+        <Center>
+          <ResponseDiv>
+            Responses
+            <ResponseCard apiResponse={apiResponse} value={value} />
+          </ResponseDiv>
+        </Center>
       </AppDiv>
     </ChakraProvider>
   );
