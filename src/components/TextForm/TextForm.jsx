@@ -1,3 +1,4 @@
+import { v4 as uuidv4 } from "uuid";
 import {
   FormControl,
   FormLabel,
@@ -46,7 +47,12 @@ function TextForm(props) {
       .then((res) => res.json())
       .then((data) => (returnedData = data.choices[0].text))
       .then(() => console.log("RETURNED DATA: ", returnedData))
-      .then(() => setApiResponse(returnedData));
+      .then(() =>
+        setApiResponse((prev) => [
+          { id: uuidv4(), prompt: value, response: returnedData },
+          ...prev,
+        ])
+      );
   };
 
   return (
@@ -58,7 +64,7 @@ function TextForm(props) {
             value={value}
             onChange={handleInputChange}
             placeholder="Enter a prompt for AI translation."
-            size="sm"
+            size="lg"
             type="text"
           />
 

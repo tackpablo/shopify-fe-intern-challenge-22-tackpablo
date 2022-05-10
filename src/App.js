@@ -7,7 +7,7 @@ import { ChakraProvider, Center } from "@chakra-ui/react";
 
 function App() {
   const [value, setValue] = useState("");
-  const [apiResponse, setApiResponse] = useState("");
+  const [apiResponse, setApiResponse] = useState([]);
 
   return (
     <ChakraProvider>
