@@ -24,7 +24,11 @@ function App() {
         <Center>
           <ResponseDiv>
             Responses
-            <ResponseCard apiResponse={apiResponse} value={value} />
+            <ResponseCard
+              apiResponse={apiResponse}
+              setApiResponse={setApiResponse}
+              value={value}
+            />
           </ResponseDiv>
         </Center>
       </AppDiv>

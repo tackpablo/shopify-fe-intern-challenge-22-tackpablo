@@ -6,6 +6,7 @@ import {
   Button,
   Textarea,
 } from "@chakra-ui/react";
+import { useEffect } from "react";
 
 function TextForm(props) {
   const { setApiResponse, value, setValue, apiResponse } = props;
@@ -47,13 +48,18 @@ function TextForm(props) {
       .then((res) => res.json())
       .then((data) => (returnedData = data.choices[0].text))
       .then(() => console.log("RETURNED DATA: ", returnedData))
-      .then(() =>
+      .then(() => {
         setApiResponse((prev) => [
           { id: uuidv4(), prompt: value, response: returnedData },
           ...prev,
-        ])
-      );
+        ]);
+      });
   };
+
+  useEffect(() => {
+    const responseObj = JSON.stringify(apiResponse);
+    localStorage.setItem("responseObj", responseObj);
+  }, [apiResponse]);
 
   return (
     <>
