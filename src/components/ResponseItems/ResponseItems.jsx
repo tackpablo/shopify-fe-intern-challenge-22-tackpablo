@@ -1,5 +1,3 @@
-import styled from "styled-components";
-
 function ResponseItems(props) {
   const { response, prompt } = props;
 

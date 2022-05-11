@@ -1,15 +1,21 @@
 import ResponseItems from "../ResponseItems/ResponseItems";
 import { Box } from "@chakra-ui/react";
+import { useEffect } from "react";
 
 function ResponseCard(props) {
-  const { apiResponse, value } = props;
+  const { apiResponse, setApiResponse } = props;
 
-  const response = localStorage.getItem("responseObj" || []);
-  const parsedResponse = JSON.parse(response);
+  useEffect(() => {
+    if (localStorage.getItem("responseObj")) {
+      const parsedResponse = JSON.parse(localStorage.getItem("responseObj"));
+      setApiResponse(parsedResponse);
+    }
+  }, []);
+
   return (
     <>
-      {parsedResponse
-        ? parsedResponse.map((item, index) => {
+      {apiResponse
+        ? apiResponse.map((item, index) => {
             return (
               <Box
                 width="4xl"

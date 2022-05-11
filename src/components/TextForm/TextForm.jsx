@@ -6,10 +6,9 @@ import {
   Button,
   Textarea,
 } from "@chakra-ui/react";
-import { useEffect } from "react";
 
 function TextForm(props) {
-  const { setApiResponse, value, setValue, apiResponse } = props;
+  const { setApiResponse, value, setValue } = props;
 
   let handleInputChange = (e) => {
     let inputValue = e.target.value;
@@ -22,8 +21,7 @@ function TextForm(props) {
 
   const onSubmitHandler = (e) => {
     e.preventDefault();
-    console.log("SUBMITTED");
-    console.log("VALUE FROM SUBMIT: ", value);
+
     const query = value;
 
     const data = {
@@ -47,19 +45,18 @@ function TextForm(props) {
     })
       .then((res) => res.json())
       .then((data) => (returnedData = data.choices[0].text))
-      .then(() => console.log("RETURNED DATA: ", returnedData))
       .then(() => {
-        setApiResponse((prev) => [
-          { id: uuidv4(), prompt: value, response: returnedData },
-          ...prev,
-        ]);
+        setApiResponse((prev) => {
+          const newResponse = [
+            { id: uuidv4(), prompt: value, response: returnedData },
+            ...prev,
+          ];
+          const responseObj = JSON.stringify(newResponse);
+          localStorage.setItem("responseObj", responseObj);
+          return newResponse;
+        });
       });
   };
-
-  useEffect(() => {
-    const responseObj = JSON.stringify(apiResponse);
-    localStorage.setItem("responseObj", responseObj);
-  }, [apiResponse]);
 
   return (
     <>
