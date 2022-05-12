@@ -5,21 +5,24 @@ import {
   FormHelperText,
   Button,
   Textarea,
+  Spinner,
 } from "@chakra-ui/react";
+import { useState } from "react";
 
 function TextForm(props) {
   const { setApiResponse, value, setValue } = props;
+  const [isLoading, setIsLoading] = useState(false);
 
   let handleInputChange = (e) => {
     let inputValue = e.target.value;
 
     setValue(inputValue);
-    console.log("VALUE: ", value);
   };
 
-  const isError = value.length === 0;
+  const isError = value === "";
 
   const onSubmitHandler = (e) => {
+    setIsLoading(true);
     e.preventDefault();
 
     const query = value;
@@ -39,7 +42,7 @@ function TextForm(props) {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer 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`,
+        Authorization: `Bearer ${process.env.REACT_APP_OPENAI_SECRET}`,
       },
       body: JSON.stringify(data),
     })
@@ -53,6 +56,8 @@ function TextForm(props) {
           ];
           const responseObj = JSON.stringify(newResponse);
           localStorage.setItem("responseObj", responseObj);
+          setIsLoading(false);
+          setValue("");
           return newResponse;
         });
       });
@@ -69,6 +74,8 @@ function TextForm(props) {
             placeholder="Enter a prompt for AI translation."
             size="lg"
             type="text"
+            autoFocus
+            aria-label="Enter Prompt Text Area"
           />
 
           {!isError && (
@@ -77,8 +84,14 @@ function TextForm(props) {
             </FormHelperText>
           )}
 
-          <Button colorScheme="teal" variant="solid" type="submit">
-            Submit
+          <Button
+            aria-label="Submit"
+            tabIndex="0"
+            colorScheme="teal"
+            variant="solid"
+            type="submit"
+          >
+            {isLoading ? <Spinner color="red.500" /> : "Submit"}
           </Button>
         </form>
       </FormControl>
