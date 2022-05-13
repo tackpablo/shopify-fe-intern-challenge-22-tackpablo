@@ -1,33 +1,40 @@
 import { useState } from "react";
 import "./App.css";
-import FormCard from "./components/FormCard/FormCard";
-import ResponseCard from "./components/FormCard/ResponseCard";
+import FormCard from "./components/TextForm/FormCard";
+import ResponseCard from "./components/ResponseItems/ResponseCard";
 import styled from "styled-components";
 import { ChakraProvider, Center } from "@chakra-ui/react";
 
 function App() {
-  const [value, setValue] = useState("");
-  const [apiResponse, setApiResponse] = useState([]);
+  const [promptValue, setPromptValue] = useState("");
+  const [storageData, setStorageData] = useState([]);
 
   return (
     <ChakraProvider>
       <AppDiv className="App">
-        <h1>Fun with AI!</h1>
+        <TitleDiv>Fun with OpenAI!</TitleDiv>
+        <Center>
+          <DescDiv>
+            Using a powerful AI model, this app is able to process plain text
+            prompts and produce outputs that are hard to distinguish from human
+            writing.
+          </DescDiv>
+        </Center>
         <Center>
           <FormCard
-            apiResponse={apiResponse}
-            setApiResponse={setApiResponse}
-            value={value}
-            setValue={setValue}
+            storageData={storageData}
+            setStorageData={setStorageData}
+            promptValue={promptValue}
+            setPromptValue={setPromptValue}
           />
         </Center>
         <Center>
           <ResponseDiv>
             Responses
             <ResponseCard
-              apiResponse={apiResponse}
-              setApiResponse={setApiResponse}
-              value={value}
+              storageData={storageData}
+              setStorageData={setStorageData}
+              promptValue={promptValue}
             />
           </ResponseDiv>
         </Center>
@@ -36,9 +43,19 @@ function App() {
   );
 }
 
+const TitleDiv = styled.div`
+  font-size: 2em;
+`;
+
 const AppDiv = styled.div`
   margin-top: 2em;
   font-size: 2em;
+`;
+
+const DescDiv = styled.div`
+  margin-top: 2em;
+  font-size: 0.5em;
+  width: 30%;
 `;
 
 const ResponseDiv = styled.div`
