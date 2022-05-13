@@ -1,80 +1,84 @@
 # 2022 Fall Front End Developer Intern Challenge
 
-Presenting Fun with OpenAI, a simple application that uses the GPT-3 AI Model created by [OpenAI](https://openai.com/api/) to uses plain text prompts to produce outputs that are hard to distinguish from human writing.
+Presenting _Fun with OpenAI_, a simple application that uses the GPT-3 AI Model created by [OpenAI](https://openai.com/api/) to uses plain text prompts to produce outputs that are hard to distinguish from human writing.
 
 You can find more information about the specifications of the challenge [here](https://docs.google.com/document/d/1O7mCynsz_cBXkEaCFGSZAuvAOY84QVq35l20xJwjOYg/edit).
 
 You can find the live deployment [here](https://shopify22-pablo-frontend-chal.netlify.app/)
 
-## Preview
+## 🔍 Preview
 
-### Desktop View
+### 💻 Desktop
 
-[Desktop View]()
+[Desktop Preview](https://github.com/tackpablo/shopify-fe-intern-challenge-22-tackpablo/blob/main/src/images/DesktopView.gif)
 
-[Mobile View]()
+### 📱 Mobile
 
-In the project directory, you can run:
+[Mobile Preview](https://github.com/tackpablo/shopify-fe-intern-challenge-22-tackpablo/blob/main/src/images/MobileView.gif)
 
-### `npm start`
+## 📚 Table of Contents
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- [🔍 Preview](#-preview)
+  - [📱 Mobile](#-mobile)
+  - [💻 Desktop](#-desktop)
+- [📚 Table of Contents](#-table-of-contents)
+- [🚀 Features](#-features)
+- [🔧 Getting Started](#-getting-started)
+  - [Run Development Environment](#run-development-environment)
+  - [Build for Production](#build-for-production)
+- [👩‍💻 Technologies and Libraries Used](#-technologies-and-libraries-used)
+- [♿ Accessibility](#-accessibility)
+- [📝 Notes](#-notes)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 🚀 Features
 
-### `npm test`
+- User is able to select prompt statements which can be submitted
+- User is able to type in prompt which can be submitted
+- User prompts and API responses will appear under Responses
+- Responses can be viewed newest first
+- User can refresh or leave the page and responses will not clear
+- User can use "Clear History" button to clear responses
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 🔧 Getting Started
 
-### `npm run build`
+You can clone this repository by using the command line:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```bash
+git clone git@github.com:tackpablo/shopify-fe-intern-challenge-22-tackpablo.git app
+cd app
+yarn # npm i
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- Remember to install dependencies after cloning it locally.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Run Development Environment
 
-### `npm run eject`
+```bash
+yarn dev # npm run start
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Build for Production
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```bash
+yarn build # npm run build
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## 👩‍💻 Technologies and Libraries Used
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- React
+- Chakra UI
+- Styled Components
+- uuid
+- [OpenAI's GPT-3 API](https://openai.com/api/)
 
-## Learn More
+## ♿ Accessibility
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+This web application is fully responsive on mobile. It also has an accessibility score of 98 according to Google lighthouse.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## 📝 Notes
 
-### Code Splitting
+All components were developed from scratch and implemented based on the design system created for this challenge.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+In regards data persistance, localStorage and sessionStorage were considered. Session storage only allowed data persistance until the tab or window was closed, while local storage persists until manual cache clearing (or if you web app clears the data). Due to these reasons, local storage was chosen.
 
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+For usability, the prompt reverts back to default and the prompt also clears after submission.
