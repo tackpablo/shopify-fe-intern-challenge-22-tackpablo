@@ -46,10 +46,24 @@ You can clone this repository by using the command line:
 ```bash
 git clone git@github.com:tackpablo/shopify-fe-intern-challenge-22-tackpablo.git app
 cd app
-yarn # npm i
+yarn # npm install
 ```
 
 - Remember to install dependencies after cloning it locally.
+
+_Please note, to use the API from [OpenAI](https://openai.com/api/), registration is required._
+
+Create an .env file in the root folder (app) to keep your key private
+
+```
+cd app
+```
+
+You will need to add an secret key, replacing _YOUR_OPEN_API_KEY_ with the one from the OpenAI website.
+
+```
+REACT_APP_OPENAI_SECRET=YOUR_OPEN_API_KEY
+```
 
 ### Run Development Environment
 
@@ -73,7 +87,7 @@ yarn build # npm run build
 
 ## ♿ Accessibility
 
-This web application is fully responsive on mobile. It also has an accessibility score of 98 according to Google lighthouse.
+This web application is fully responsive on mobile. It also has an accessibility score of 98 according to Google lighthouse. The application loads with the prompt text field focused, and the buttons are accessible via the keyboard tab button.
 
 ## 📝 Notes
 
