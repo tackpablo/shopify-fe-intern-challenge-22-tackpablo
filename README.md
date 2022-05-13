@@ -1,8 +1,18 @@
-# Getting Started with Create React App
+# 2022 Fall Front End Developer Intern Challenge
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Presenting Fun with OpenAI, a simple application that uses the GPT-3 AI Model created by [OpenAI](https://openai.com/api/) to uses plain text prompts to produce outputs that are hard to distinguish from human writing.
 
-## Available Scripts
+You can find more information about the specifications of the challenge [here](https://docs.google.com/document/d/1O7mCynsz_cBXkEaCFGSZAuvAOY84QVq35l20xJwjOYg/edit).
+
+You can find the live deployment [here](https://shopify22-pablo-frontend-chal.netlify.app/)
+
+## Preview
+
+### Desktop View
+
+[Desktop View]()
+
+[Mobile View]()
 
 In the project directory, you can run:
 

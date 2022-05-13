@@ -57,6 +57,9 @@ const DescDiv = styled.div`
   margin-top: 2em;
   font-size: 0.5em;
   width: 30%;
+  @media (max-width: 768px) {
+    display: none;
+  }
 `;
 
 const ResponseDiv = styled.div`
