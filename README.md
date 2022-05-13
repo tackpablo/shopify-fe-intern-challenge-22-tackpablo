@@ -10,11 +10,11 @@ You can find the live deployment [here](https://shopify22-pablo-frontend-chal.ne
 
 ### 💻 Desktop
 
-[Desktop Preview](src/images/DesktopView.gif)
+![Desktop Preview](src/images/DesktopView.gif)
 
 ### 📱 Mobile
 
-[Mobile Preview](src/images/MobileView.gif)
+![Mobile Preview](src/images/MobileView.gif)
 
 ## 📚 Table of Contents
 
