@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import styled from "styled-components";
 
 function PromptSelect(props) {
-  const { promptValue, setPromptValue } = props;
+  const { promptValue, setPromptValue, value, setValue } = props;
 
   const options = [
     {
@@ -22,8 +22,8 @@ function PromptSelect(props) {
 
   const handleChange = (e) => {
     const promptValue = e.target.value;
-    console.log(e.target.value);
 
+    setValue(promptValue);
     setPromptValue(promptValue);
   };
 
@@ -34,8 +34,9 @@ function PromptSelect(props) {
         id="prompts"
         variant="outline"
         mb="1rem"
+        placeholder="Select prompt"
         onChange={handleChange}
-        placeholder="Select Prompt"
+        value={value}
       >
         {options.map((option) => {
           return (

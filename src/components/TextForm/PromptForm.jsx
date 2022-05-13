@@ -16,6 +16,7 @@ function PromptForm(props) {
   const { setStorageData, promptValue, setPromptValue } = props;
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
+  const [value, setValue] = useState("");
 
   // Handler for textarea input value change
   const handleInputChange = (e) => {
@@ -76,9 +77,7 @@ function PromptForm(props) {
           localStorage.setItem("responseObj", responseObj);
           setIsLoading(false);
           setPromptValue("");
-          document
-            .querySelector("#prompts")
-            .setAttribute("value", "Select Prompt");
+          setValue("");
           return newResponse;
         });
       })
@@ -112,6 +111,8 @@ function PromptForm(props) {
             mb="1rem"
             promptValue={promptValue}
             setPromptValue={setPromptValue}
+            value={value}
+            setValue={setValue}
           />
           <Textarea
             value={promptValue}
