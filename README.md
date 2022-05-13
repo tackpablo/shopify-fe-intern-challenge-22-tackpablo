@@ -10,11 +10,11 @@ You can find the live deployment [here](https://shopify22-pablo-frontend-chal.ne
 
 ### 💻 Desktop
 
-[Desktop Preview](https://github.com/tackpablo/shopify-fe-intern-challenge-22-tackpablo/blob/main/src/images/DesktopView.gif)
+[Desktop Preview](src/images/DesktopView.gif)
 
 ### 📱 Mobile
 
-[Mobile Preview](https://github.com/tackpablo/shopify-fe-intern-challenge-22-tackpablo/blob/main/src/images/MobileView.gif)
+[Mobile Preview](src/images/MobileView.gif)
 
 ## 📚 Table of Contents
 
