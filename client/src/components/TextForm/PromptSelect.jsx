@@ -1,28 +1,13 @@
 import { Select } from "@chakra-ui/react";
-import { useEffect, useState } from "react";
 import styled from "styled-components";
+import { options } from "../../data/data";
 
 function PromptSelect(props) {
-  const { promptValue, setPromptValue, value, setValue } = props;
+  const { setPromptValue, value, setValue } = props;
 
-  const options = [
-    {
-      id: 1,
-      prompt: "Write a story about Shopify",
-    },
-    {
-      id: 2,
-      prompt: "What does good customer service look like",
-    },
-    {
-      id: 3,
-      prompt: "Would I be a good intern",
-    },
-  ];
-
-  const handleChange = (e) => {
+  // Handler for select value changes
+  const selectChangeHandler = (e) => {
     const promptValue = e.target.value;
-
     setValue(promptValue);
     setPromptValue(promptValue);
   };
@@ -35,8 +20,9 @@ function PromptSelect(props) {
         variant="outline"
         mb="1rem"
         placeholder="Select prompt"
-        onChange={handleChange}
+        onChange={selectChangeHandler}
         value={value}
+        backgroundColor="white"
       >
         {options.map((option) => {
           return (
@@ -50,6 +36,7 @@ function PromptSelect(props) {
   );
 }
 
+// Styled components
 const PromptLabel = styled.label`
   display: flex;
   font-size: 1.2rem;

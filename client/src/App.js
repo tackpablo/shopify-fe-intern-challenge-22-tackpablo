@@ -43,6 +43,7 @@ function App() {
   );
 }
 
+// Styled components
 const TitleDiv = styled.div`
   font-size: 2em;
 `;

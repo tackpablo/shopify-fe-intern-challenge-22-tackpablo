@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
+import PromptSelect from "./PromptSelect";
 import {
   FormControl,
   FormLabel,
@@ -10,7 +11,6 @@ import {
   Center,
   FormErrorMessage,
 } from "@chakra-ui/react";
-import PromptSelect from "./PromptSelect";
 
 function PromptForm(props) {
   const { setStorageData, promptValue, setPromptValue } = props;
@@ -18,12 +18,14 @@ function PromptForm(props) {
   const [isError, setIsError] = useState(false);
   const [value, setValue] = useState("");
 
-  // Handler for textarea input value change
-  const handleInputChange = (e) => {
+  // Handler for textarea input value changes
+  const inputChangeHandler = (e) => {
     let inputValue = e.target.value;
+
     setPromptValue(inputValue);
   };
 
+  // Handler for clearing history of saved prompts and responses
   const clearStorageHandler = () => {
     localStorage.clear();
     setStorageData([]);
@@ -114,15 +116,17 @@ function PromptForm(props) {
             value={value}
             setValue={setValue}
           />
+
           <Textarea
             value={promptValue}
-            onChange={handleInputChange}
+            onChange={inputChangeHandler}
             placeholder="Enter a prompt for AI translation."
             size="lg"
             type="text"
             autoFocus
             aria-label="Enter Prompt Text Area"
             height="5ch"
+            backgroundColor="white"
           />
 
           {!isError ? (
