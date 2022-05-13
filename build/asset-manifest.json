@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/shopify-fe-intern-challenge-22-tackpablo/static/css/main.b6fb792c.css",
+    "main.js": "/shopify-fe-intern-challenge-22-tackpablo/static/js/main.aaac8537.js",
+    "index.html": "/shopify-fe-intern-challenge-22-tackpablo/index.html",
+    "main.b6fb792c.css.map": "/shopify-fe-intern-challenge-22-tackpablo/static/css/main.b6fb792c.css.map",
+    "main.aaac8537.js.map": "/shopify-fe-intern-challenge-22-tackpablo/static/js/main.aaac8537.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.b6fb792c.css",
+    "static/js/main.aaac8537.js"
+  ]
+}
